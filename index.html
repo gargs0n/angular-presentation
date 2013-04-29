@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
+    <title>AngularJS</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -35,7 +35,7 @@
             <h3>AngularJS</h3>
             <ul>
                 <li>
-                    Etwa 3 Jahre alt
+                    etwa 3 Jahre alt
                 </li>
                 <li>
                     v1.0 am 14. Juni 2012
@@ -278,8 +278,8 @@
             <h5>Module</h5>
             <ul>
                 <li>Angular App wird nicht über "main method" instanziiert, sondern deklarativ über Module</li>
-                <li>Module werden über die "module object API" registriert</li>
-                <li>über Method Chaining können z.b. Services hinzugefügt werden</li>
+                <li>werden über die "module object API" registriert</li>
+                <li>via Method Chaining können z.b. Services hinzugefügt werden</li>
                 <li>Service-, Directive, Filter- und Application-Module</li>
             </ul>
         </section>
@@ -392,10 +392,14 @@
     &lt;/div&gt;
         </code></pre>
         <h5>Beispiel</h5>
-        <p>
-            <input type="text" ng-init="greetings.text='In Hamburg sagt man moin';" value="" ng-model="greetings.text">
+        <ul class="example">
+            <li>
+                <input type="text" ng-init="greetings.text='In Hamburg sagt man moin';" value="" ng-model="greetings.text">
+            </li>
+            <li>
             {{greetings.text}}
-        </p>
+            </li>
+        </ul>
     </section>
 
     <section>

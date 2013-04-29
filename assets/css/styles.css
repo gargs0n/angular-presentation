@@ -689,8 +689,11 @@ h5.code {
     color:#ddd;
     font-size: 0.7em;
     line-height: 0.7em;
-    margin-bottom: 0;
+    margin-bottom: 1px;
     padding-bottom: 0;
+	color:#bbb;
+	text-transform: none;
+	font-weight: normal;
 }
 
 
@@ -739,8 +742,8 @@ section input {
     -ms-border-radius: 2px;
     border-radius: 5px;
     border-color: #183c18;
-    padding:0 0 0 10px;
-    font-size: 60%;
+    padding:0 0 3px 10px;
+    font-size: 95%;
 }
 
 
@@ -785,4 +788,8 @@ section input {
 
 .logo-small.show {
     opacity: 1;
+}
+
+ul.example {
+	list-style: none;
 }

@@ -1,4 +1,4 @@
 angular-presentation
 ====================
 
-AngularJS Präsentaion für Technik Offsite
+AngularJS Präsentation für Technik Offsite
