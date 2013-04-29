@@ -1,0 +1,435 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="components/highlight/styles/default.css">
+    <script src="components/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="concave" ng-controller="PageController" keyboard-directive>
+
+
+<div class="logo-small" ng-class="{show:activeSlide > 0}">
+    <img src="assets/img/angular-logo-small.png">
+</div>
+
+<slide-deck-directive>
+    <div class="slides">
+
+        <section>
+            <img src="assets/img/angular-logo.png">
+            <h4>A Superheroic JavaScript MVW Framework</h4>
+        </section>
+
+        <section>
+            <h2>WTF, noch ein JS-Framwork?</h2>
+            <img class="white" src="assets/img/frameworks.png">
+        </section>
+
+        <section>
+            <h3>AngularJS</h3>
+            <ul>
+                <li>
+                    Etwa 3 Jahre alt
+                </li>
+                <li>
+                    v1.0 am 14. Juni 2012
+                </li>
+                <li>
+                    < 29kb (gziped)
+                </li>
+                <li>
+                   benötigt keine third party libraries (jquery,..)
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <img src="assets/img/shock.gif" style="height: 400px;width: 423px">
+            <h1 style="position: relative;top:-50px">Wait, no jQuery?</h1>
+        </section>
+
+        <section>
+            <h3>AngularJS / jqLite</h3>
+           <ul>
+               <li>angularJS enthält jqLite</li>
+               <li>API-kompatible abgespeckte Version von jQuery</li>
+               <li>bekannte jQuery Methoden wie addClass(), css() oder data() sind also enthalten</li>
+               <li>jQuery kann optional eingebunden werden und erweitert jqLite</li>
+           </ul>
+        </section>
+
+        <section>
+            <h3>AngularJS / Philosophie</h3>
+            <ul>
+                <li>
+                    HTML für dynamische Views erweitern anstatt zu abstrahieren
+                </li>
+                <li>
+                    Stärken von HTML / CSS nutzen
+                </li>
+                <li>
+                    Workflow der den Bedürfnissen sowohl neuer als auch erfahreneren Entwicklern gerecht wird
+                </li>
+                <li>
+                    Einfach - aber doch höchst wartbar / skalierbar / erweiterbar
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>AngularJS / Konzept</h3>
+            <ul>
+                <li>
+                    MVC / MVVM / MVW  Architektur
+                </li>
+                <li>
+                    Clientseitiges Templating in HTML
+                </li>
+                <li>
+                    Module (service,directive,filter)
+                </li>
+                <li>
+                    Dependency Injection
+                </li>
+                <li>
+                    Bidirektionales Data-Binding
+                </li>
+                <li>
+                    Directives
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>AngularJS / MVW Architektur</h3>
+            <p>
+                Eine AngularJS Applikation wird in <strong>models</strong>, <strong>views</strong>, <strong>controller</strong> und optional <strong>services</strong> strukturiert.
+            </p>
+            <ul>
+                <li>
+                    <strong>model</strong> - Javscript Objekte (object properties)
+                </li>
+                <li>
+                    <strong>view</strong> -  deklaratives HTML / CSS (template + modeldata)
+                </li>
+                <li>
+                    <strong>controller</strong> - Javascript Klasse (application behavior)
+                </li>
+                <li>
+                    <strong>service</strong> - singleton Objekt das über Dependency Injection dem Controller verfügbar gemacht wird ($location,$http...)
+                </li>
+
+            </ul>
+        </section>
+
+        <section>
+            <h3>AngularJS / Templating / 1</h3>
+            <ul>
+                <li>HTML5 Markup</li>
+                <li>eigene Elemente / Attribute über DOM-Transformation</li>
+                <li>Data-Bindings (Expressions) über <span ng-non-bindable>{{}}</span> Notation</li>
+                <li>Kompilierung clientseitig im Browser</li>
+                <li>deklarativer Syntax</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>AngularJS / Templating / 2</h3>
+            <h5 class="code">template.html</h5>
+            <pre><code ng-non-bindable>
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;script src=&quot;angular.js&quot;&gt;&lt;/script&gt;
+            &lt;script src=&quot;controller.js&quot;&gt;&lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body ng-app=&quot;myApp&quot;&gt;
+            &lt;div ng-controller=&quot;HelloController&quot;&gt;
+                &lt;p ng-class=&quot;{show:firstVisit === true}&quot;&gt;
+                    {{greeting.text}}
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+            </code></pre>
+            <h5 class="code">controller.js</h5>
+            <pre><code ng-non-bindable>
+    function HelloController($scope) {
+        $scope.greeting = {
+            text: 'In Hamburg sagt man moin!';
+        };
+        $scope.firstVisit = true;
+    }
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>AngularJS / Templating / 3</h3>
+            <h5>Data-Bindings</h5>
+            <ul>
+                <li><span ng-non-bindable>{{ }}</span> Notation</li>
+                <li>Referenzierungen auf Objekte (data primitives)</li>
+                <li>Javascript Expressions (Javascript Snippets)</li>
+                <li>werden zur Laufzeit über Angular Service $parse kompiliert</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>AngularJS / Templating / 4</h3>
+            <h5 class="code">template.html</h5>
+            <pre><code ng-non-bindable>
+    &lt;body ng-app=&quot;myApp&quot;&gt;
+        &lt;p&gt;
+            {{greeting.text}}
+        &lt;/p&gt;
+        &lt;p&gt;
+            1 + 2 = {{1+2}}
+        &lt;/p&gt;
+        &lt;p&gt;
+            {{recompute() / 10}}
+        &lt;/p&gt;
+    &lt;/body&gt;
+            </code></pre>
+            <h5 class="code">view</h5>
+            <pre><code ng-non-bindable>
+    &lt;body ng-app=&quot;myApp&quot;&gt;
+        &lt;p&gt;
+            In Hamburg sagt man moin!
+        &lt;/p&gt;
+        &lt;p&gt;
+            1 + 2 = 3
+        &lt;/p&gt;
+        &lt;p&gt;
+            20
+        &lt;/p&gt;
+    &lt;/body&gt;
+    </code></pre>
+        </section>
+        <section>
+            <h3>AngularJS / Templating / 5</h3>
+            <h5>Directives</h5>
+            <ul>
+                <li>eigene HTML-Attribute</li>
+                <li>ergänzen HTML-Elemente funktional</li>
+                <li>dürfen als einziges Modul DOM-Transformationen ausführen (Entkopplung Controller)</li>
+                <li>wiederverwendbar</li>
+                <li>Standart Directives: ng-app, ng-model, ng-class, ng-repeat</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>AngularJS / Templating / 6</h3>
+            <h5>Beispiel Syntax</h5>
+            <h5 class="code">template.html</h5>
+            <pre><code ng-non-bindable>
+    &lt;span my-dir=&quot;exp&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;my-dir: exp;&quot;&gt;&lt;/span&gt;
+    &lt;my-dir&gt;&lt;/my-dir&gt;
+    &lt;!-- directive: my-dir exp --&gt;
+        </code></pre>
+        </section>
+
+        <section>
+            <h3>AngularJS / Templating / 7</h3>
+            <h5 class="code">ng-repeat directive</h5>
+            <pre><code ng-non-bindable>
+    &lt;div ng-controller=&quot;TemplatesController&quot;&gt;
+        &lt;ul&gt;
+            &lt;li ng-repeat=&quot;item in items&quot;&gt;
+                {{item}} &lt;span class=&quot;red&quot;&gt;{{$index}}&lt;/span&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+            </code></pre>
+            <pre><code ng-non-bindable>
+    myApp.controller('TemplatesController',function($scope) {
+        $scope.items = ['web', 'element', '#14'];
+    });
+            </code></pre>
+            <pre><code>
+    web 0
+    element 1
+    #14 2
+                </code></pre>
+        </section>
+
+
+
+        <section>
+            <h3>AngularJS / Templating / 8</h3>
+            <h5>View-Templates</h5>
+            <ul>
+                <li>werden asynchron geladen</li>
+                <li>über include sind nested templates</li>
+            </ul>
+            <pre><code ng-non-bindable>
+    &lt;div ng-view&gt;&lt;/div&gt; &lt;!-- Template-URL &uuml;ber $routeProvider Service --&gt;
+    &lt;div ng-include=&quot;templates/foo.html&quot;&gt;&lt;/div&gt;
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>AngularJS / Modules / 1</h3>
+            <h5>Module</h5>
+            <ul>
+                <li>Angular App wird nicht über "main method" instanziiert, sondern deklarativ über Module</li>
+                <li>Module werden über die "module object API" registriert</li>
+                <li>über Method Chaining können z.b. Services hinzugefügt werden</li>
+                <li>Service-, Directive, Filter- und Application-Module</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>AngularJS / Modules / 2</h3>
+            <h5 class="code">template.html</h5>
+            <pre><code ng-non-bindable>
+    &lt;html ng-app=&quot;myApp&quot;&gt;
+            </code></pre>
+            <h5 class="code"modules.js>modules.js</h5>
+            <pre><code ng-non-bindable>
+    var myApp = angular.module('myApp', []);
+
+    // Service Module
+    angular.module('aService', []);
+
+    // Collection of Service Modules.
+    angular.module('myServices', ['aService','anotherService','...']);
+
+    // init application
+    var myApp = angular.module('myApp', ['myServices','myDirectives','...']);
+            </code></pre>
+
+        </section>
+        <section>
+            <h3>AngularJS / Modules / 3</h3>
+            <h5>Services</h5>
+            <ul>
+                <li>"module object API" registriert</li>
+                <li>singelton objects</li>
+                <li>über dependency injection verfügbar</li>
+                <li>Beispiele: $http, $route, $location</li>
+                <li>provider(name,constructor()) -> komplexe Funktionalitäten</li>
+                <li>factory(name,$getFuntion()) -> komplexe Funktionalitäten, nicht konfigurierbar</li>
+                <li>service(name,constructor()) -> simple Funktionalität</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>AngularJS / Modules / 4</h3>
+            <pre><code ng-non-bindable>
+    var itemService = angular.module('itemService',[]);
+    itemService.factory('Items',function(){
+        var items = {};
+        items.query = function(){
+            return [
+                {title:'Test',body:'Some Text'},
+                {title:'...',body:'...'}
+            ];
+        }
+        return items;
+    });
+            </code></pre>
+            <pre><code>
+    function ItemController($scope,Items){
+        var myDataFromItemService = Items.query();
+    }
+            </code></pre>
+        </section>
+
+        <section>
+            <h3>AngularJS / Dependency Injection / 1</h3>
+            <h5>Dependency Injection:</h5>
+            <p>ein allgemeines Entwurfsmuster um Abhängigkeiten zwischen Objekten zu minimieren.</p>
+
+            <h5>Auflösung einer Abhängigkeit:</h5>
+            <ul>
+                <li>über new-Operator erzeugen</li>
+                <li>Auflösen über eine globale Variable</li>
+                <li>übergeben wo es benötigt wird  => Dependency Injection</li>
+            </ul>
+        </section>
+       <section>
+           <h3>AngularJS / Dependency Injection / 2</h3>
+           <ul>
+               <li>$scope und Services werden als Parameter übergeben</li>
+               <li>Auflösung über Parameter Matching / Funktions-Signatur</li>
+           </ul>
+           <h5 class="code"modules.js>modules.js</h5>
+           <pre><code ng-non-bindable>
+    myApp.service('myService', function() {/*...*/});
+    myApp.service('myService2', function() {/*...*/});
+    myApp.controller('SomeItemsController', function(myService,myService2) {
+
+        // myService was automatically injected
+        myService.get('some/path').success(function(data) {
+            $scope.items = data.items;
+        });
+    });
+       </code></pre>
+       </section>
+    <section>
+        <h3>AngularJS / Data Binding / 1</h3>
+        <h5>Bidirektionales Data-Binding</h5>
+        <ul>
+            <li>Model und View bleiben stets synchron</li>
+            <li>UI-Komponenten müssen auf Model Properties gemappt werden</li>
+            <li>kein zusätzliches Event-Handling nötig</li>
+            <li>View ist Abbild des Models</li>
+        </ul>
+    </section>
+    <section>
+        <h3>AngularJS / Data Binding / 2</h3>
+        <h5 class="code"modules.js>template.html</h5>
+        <pre><code ng-non-bindable>
+    &lt;div ng-controller=&quot;HelloController&quot;&gt;
+        &lt;input type=&quot;text&quot; ng-model=&quot;greetings.text&quot;/&gt;
+        &lt;p&gt;{{greetings.text}}&lt;/p&gt;
+    &lt;/div&gt;
+        </code></pre>
+        <h5>Beispiel</h5>
+        <p>
+            <input type="text" ng-init="greetings.text='In Hamburg sagt man moin';" value="" ng-model="greetings.text">
+            {{greetings.text}}
+        </p>
+    </section>
+
+    <section>
+        <h3>AngularJS / Unobstrusive Javascript</h3>
+        <h5>Vorteile / Nachteile unobstrusive javascript</h5>
+    </section>
+
+    <section>
+        <h3>AngularJS / Unit Testing</h3>
+        <h5>Unit Testing</h5>
+        <img src="assets/img/testing.gif">
+    </section>
+
+    <section>
+        <h5>mehr Infos:</h5>
+        <ul>
+            <li><a href="http://angularjs.org/" target="_blank">angularjs.org</a></li>
+            <li><a href="http://todomvc.com" target="_blank">TodoMVC.com</a></li>
+            <li><a href="https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk">batarang chrome pluging</a></li>
+            <li><a href="https://github.com/gargs0n/angular-presentation" target="_blank">github.com/gargs0n/angular-presentation</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vielen Dank</h1>
+    </section>
+
+    </div>
+
+</slide-deck-directive>
+
+<div class="progress" progress-bar-directive>
+    <span style="width:{{progress}}%"></span>
+</div>
+<script data-main="src/js/application/bootstrap" src="components/requirejs/require.js"></script>
+</body>
+</html>
