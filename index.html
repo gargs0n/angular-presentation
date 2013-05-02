@@ -28,14 +28,15 @@
 
         <section>
             <h2>WTF, noch ein JS-Framwork?</h2>
-            <img class="white" src="assets/img/frameworks.png">
+            <img src="assets/img/frameworks.png">
         </section>
 
         <section>
             <h3>AngularJS</h3>
-            <ul>
+            <img class="white" src="assets/img/nacho_libre.jpg" style="width: 700px">
+            <ul style="position: relative;top:-250px;left:120px;list-style-type: none;">
                 <li>
-                    etwa 3 Jahre alt
+                    Open-Source-JS-Framework von Google
                 </li>
                 <li>
                     v1.0 am 14. Juni 2012
@@ -44,9 +45,10 @@
                     < 29kb (gziped)
                 </li>
                 <li>
-                   benötigt keine third party libraries (jquery,..)
+                   benötigt keine third party libraries
                 </li>
             </ul>
+
         </section>
 
         <section>
@@ -74,10 +76,10 @@
                     Stärken von HTML / CSS nutzen
                 </li>
                 <li>
-                    Workflow der den Bedürfnissen sowohl neuer als auch erfahreneren Entwicklern gerecht wird
+                    Workflow, der den Bedürfnissen sowohl neuer als auch erfahreneren Entwicklern gerecht wird
                 </li>
                 <li>
-                    Einfach - aber doch höchst wartbar / skalierbar / erweiterbar
+                    Einfach - aber höchst skalierbar / erweiterbar / testbar
                 </li>
             </ul>
         </section>
@@ -92,7 +94,10 @@
                     Clientseitiges Templating in HTML
                 </li>
                 <li>
-                    Module (service,directive,filter)
+                    Directives
+                </li>
+                <li>
+                    Module (services, directives, filters)
                 </li>
                 <li>
                     Dependency Injection
@@ -100,29 +105,27 @@
                 <li>
                     Bidirektionales Data-Binding
                 </li>
-                <li>
-                    Directives
-                </li>
             </ul>
         </section>
 
         <section>
             <h3>AngularJS / MVW Architektur</h3>
+            <h5></h5>
             <p>
-                Eine AngularJS Applikation wird in <strong>models</strong>, <strong>views</strong>, <strong>controller</strong> und optional <strong>services</strong> strukturiert.
+                Eine AngularJS Applikation wird in <strong>Models</strong>, <strong>Views</strong>, <strong>Controller</strong> und optional <strong>Services</strong> strukturiert.
             </p>
             <ul>
                 <li>
-                    <strong>model</strong> - Javscript Objekte (object properties)
+                    <strong>Model</strong> - Javscript Objekt (object properties)
                 </li>
                 <li>
-                    <strong>view</strong> -  deklaratives HTML / CSS (template + modeldata)
+                    <strong>View</strong> -  deklaratives HTML / CSS (template + modeldata)
                 </li>
                 <li>
-                    <strong>controller</strong> - Javascript Klasse (application behavior)
+                    <strong>Controller</strong> - Javascript Klasse (application behavior)
                 </li>
                 <li>
-                    <strong>service</strong> - singleton Objekt das über Dependency Injection dem Controller verfügbar gemacht wird ($location,$http...)
+                    <strong>Service</strong> - singleton Objekt das über Dependency Injection dem Controller zur Verfügung steht ($location ,$http...)
                 </li>
 
             </ul>
@@ -132,10 +135,10 @@
             <h3>AngularJS / Templating / 1</h3>
             <ul>
                 <li>HTML5 Markup</li>
-                <li>eigene Elemente / Attribute über DOM-Transformation</li>
-                <li>Data-Bindings (Expressions) über <span ng-non-bindable>{{}}</span> Notation</li>
-                <li>Kompilierung clientseitig im Browser</li>
+                <li>clientseitig im Browser kompiliert</li>
+                <li>eigene Elemente / Attribute über DOM-Transformation Engine</li>
                 <li>deklarativer Syntax</li>
+                <li>Data-Bindings (Expressions) über <span ng-non-bindable>{{}}</span> Notation</li>
             </ul>
         </section>
 
@@ -195,7 +198,7 @@
         &lt;/p&gt;
     &lt;/body&gt;
             </code></pre>
-            <h5 class="code">view</h5>
+            <h5 class="code">View</h5>
             <pre><code ng-non-bindable>
     &lt;body ng-app=&quot;myApp&quot;&gt;
         &lt;p&gt;
@@ -218,22 +221,9 @@
                 <li>ergänzen HTML-Elemente funktional</li>
                 <li>dürfen als einziges Modul DOM-Transformationen ausführen (Entkopplung Controller)</li>
                 <li>wiederverwendbar</li>
-                <li>Standart Directives: ng-app, ng-model, ng-class, ng-repeat</li>
+                <li>standard Directives: ng-app, ng-model, ng-class, ng-repeat</li>
             </ul>
         </section>
-
-        <section>
-            <h3>AngularJS / Templating / 6</h3>
-            <h5>Beispiel Syntax</h5>
-            <h5 class="code">template.html</h5>
-            <pre><code ng-non-bindable>
-    &lt;span my-dir=&quot;exp&quot;&gt;&lt;/span&gt;
-    &lt;span class=&quot;my-dir: exp;&quot;&gt;&lt;/span&gt;
-    &lt;my-dir&gt;&lt;/my-dir&gt;
-    &lt;!-- directive: my-dir exp --&gt;
-        </code></pre>
-        </section>
-
         <section>
             <h3>AngularJS / Templating / 7</h3>
             <h5 class="code">ng-repeat directive</h5>
@@ -255,17 +245,50 @@
     web 0
     element 1
     #14 2
-                </code></pre>
+            </code></pre>
+        </section>
+        <section>
+            <h3>AngularJS / Templating / 6</h3>
+            <h5>Beispiel Syntax</h5>
+            <h5 class="code">template.html</h5>
+            <pre><code ng-non-bindable>
+    &lt;span ng-my-directive=&quot;exp&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;my-directive: exp;&quot;&gt;&lt;/span&gt;
+    &lt;my-directive&gt;&lt;/my-directive&gt;
+    &lt;!-- directive: my-directive exp --&gt;
+        </code></pre>
         </section>
 
-
+        <section>
+            <h3>AngularJS / Templating / 8</h3>
+            <h5>Beispiel code eigene directive</h5>
+            <h5 class="code">mydirective.js</h5>
+            <pre><code>
+    myModule.directive('myDirective', function factory(injectables) {
+        var directiveDefinitionObject = {
+            priority: 0,
+            template: '&lt;div&gt;&lt;/div&gt;',
+            templateUrl: 'directive.html',
+            replace: false,
+            restrict: 'A',
+            compile: function compile(element, attributes) { ... },
+            link: function postLink($scope, element, attributes) {
+                if ($scope.somevalue === 1) {
+                    element.addClass('active');
+                }
+            }
+        };
+        return directiveDefinitionObject;
+    });
+            </code></pre>
+        </section>
 
         <section>
             <h3>AngularJS / Templating / 8</h3>
             <h5>View-Templates</h5>
             <ul>
                 <li>werden asynchron geladen</li>
-                <li>über include sind nested templates</li>
+                <li>über include sind nested templates möglich</li>
             </ul>
             <pre><code ng-non-bindable>
     &lt;div ng-view&gt;&lt;/div&gt; &lt;!-- Template-URL &uuml;ber $routeProvider Service --&gt;
@@ -278,9 +301,9 @@
             <h5>Module</h5>
             <ul>
                 <li>Angular App wird nicht über "main method" instanziiert, sondern deklarativ über Module</li>
-                <li>werden über die "module object API" registriert</li>
-                <li>via Method Chaining können z.b. Services hinzugefügt werden</li>
-                <li>Service-, Directive, Filter- und Application-Module</li>
+                <li>Module werden über die "module object API" registriert</li>
+                <li>via method chaining können z.b. Services hinzugefügt werden</li>
+                <li>sinnvolle Strukturierung: Service-, Directive, Filter- und Application-Module</li>
             </ul>
         </section>
 
@@ -309,9 +332,9 @@
             <h3>AngularJS / Modules / 3</h3>
             <h5>Services</h5>
             <ul>
-                <li>"module object API" registriert</li>
-                <li>singelton objects</li>
-                <li>über dependency injection verfügbar</li>
+                <li>werden über "module object API" registriert</li>
+                <li>Controller Data-Provider</li>
+                <li>über Dependency Injection verfügbar</li>
                 <li>Beispiele: $http, $route, $location</li>
                 <li>provider(name,constructor()) -> komplexe Funktionalitäten</li>
                 <li>factory(name,$getFuntion()) -> komplexe Funktionalitäten, nicht konfigurierbar</li>
@@ -346,11 +369,11 @@
             <h5>Dependency Injection:</h5>
             <p>ein allgemeines Entwurfsmuster um Abhängigkeiten zwischen Objekten zu minimieren.</p>
 
-            <h5>Auflösung einer Abhängigkeit:</h5>
+            <h5>Auflösung einer Objekt-Abhängigkeit:</h5>
             <ul>
-                <li>über new-Operator erzeugen</li>
-                <li>Auflösen über eine globale Variable</li>
-                <li>übergeben wo es benötigt wird  => Dependency Injection</li>
+                <li>Objekt über new-Operator erzeugen</li>
+                <li>Objekt ist globale Variable</li>
+                <li>Objekt wird übergeben wo benötigt => Dependency Injection</li>
             </ul>
         </section>
        <section>
@@ -363,7 +386,7 @@
            <pre><code ng-non-bindable>
     myApp.service('myService', function() {/*...*/});
     myApp.service('myService2', function() {/*...*/});
-    myApp.controller('SomeItemsController', function(myService,myService2) {
+    myApp.controller('MyController', function($scope,myService,myService2){
 
         // myService was automatically injected
         myService.get('some/path').success(function(data) {
@@ -404,20 +427,29 @@
 
     <section>
         <h3>AngularJS / Unobstrusive Javascript</h3>
-        <h5>Vorteile / Nachteile unobstrusive javascript</h5>
+        <h5></h5>
+        <p style="text-align: center">"Unobstrusive Javscript" ist <span style="text-decoration: line-through;">schlecht</span> gut weil:</p>
+
+<pre><code>
+    &lt;button ng-click=&quot;reset()&quot;&gt;reset&lt;/button&gt;
+    &lt;input type=&quot;text&quot; ng-change=&quot;compute()&quot;/&gt;
+
+</code></pre>
+        <ul>
+            <li><span style="text-decoration: line-through;">nicht</span> jeder Browser unterstützt Javscript</li>
+            <li>Javascript kann <span style="text-decoration: line-through;">nicht</span> von Screenreadern gelesen werden</li>
+            <li>Event-Handling-Code ist je nach Browser <span style="text-decoration: line-through;">unterschiedlich</span> mit Angular gleich</li>
+            <li>Event-Handler werden im <span style="text-decoration: line-through;">"global namespace"</span> $scope context des Controllers deklariert</li>
+        </ul>
     </section>
 
-    <section>
-        <h3>AngularJS / Unit Testing</h3>
-        <h5>Unit Testing</h5>
-        <img src="assets/img/testing.gif">
-    </section>
 
     <section>
         <h5>mehr Infos:</h5>
         <ul>
             <li><a href="http://angularjs.org/" target="_blank">angularjs.org</a></li>
-            <li><a href="http://todomvc.com" target="_blank">TodoMVC.com</a></li>
+            <li><a href="https://plus.google.com/+AngularJS/posts" target="_blank">angularjs google+</a></li>
+            <li><a href="https://github.com/angular/angular-seed">angular seed skeleton repro</a></li>
             <li><a href="https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk">batarang chrome pluging</a></li>
             <li><a href="https://github.com/gargs0n/angular-presentation" target="_blank">github.com/gargs0n/angular-presentation</a></li>
         </ul>

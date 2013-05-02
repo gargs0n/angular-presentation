@@ -782,8 +782,8 @@ section input {
 }
 
 .logo-small img {
-    width: 70%;
-    height: 70%;
+    width: 72px;
+    height: 69px;
 }
 
 .logo-small.show {
